@@ -1,0 +1,1 @@
+export { RecentLogsTable } from "./ModelTable";
