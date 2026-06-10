@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: llmops-monitoring-platform
+    runtime: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: 8000
+      - key: ENVIRONMENT
+        value: production
+      - key: DATABASE_URL
+        sync: false
+      - key: REDIS_URL
+        sync: false
+      - key: SECRET_KEY
+        generateValue: true
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: ALLOWED_ORIGINS
+        value: '["https://llmops-monitoring-platform.onrender.com","https://llmops-platform.vercel.app"]'
+      - key: ALLOWED_HOSTS
+        value: '["*"]'

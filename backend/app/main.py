@@ -170,7 +170,7 @@ async def security_headers_middleware(request: Request, call_next):
 app.include_router(api_router, prefix=settings.API_V1_STR)
 
 
-@app.get("/", tags=["Health"])
+@app.api_route("/", methods=["GET", "HEAD"], tags=["Health"])
 async def root():
     return {
         "name": "LLMOps Monitoring Platform",
@@ -180,7 +180,7 @@ async def root():
     }
 
 
-@app.get("/health", tags=["Health"])
+@app.api_route("/health", methods=["GET", "HEAD"], tags=["Health"])
 async def health_check():
     """Comprehensive health check endpoint"""
     health = {
