@@ -98,9 +98,9 @@ export const analyticsApi = {
 // ── Projects ──────────────────────────────────────────────────────────────────
 export const projectsApi = {
   list: (params?: { page?: number; page_size?: number }) =>
-    api.get("/projects/", { params }),
+    api.get("/projects", { params }),
   create: (data: { name: string; description?: string; environment?: string }) =>
-    api.post("/projects/", data),
+    api.post("/projects", data),
   get: (id: string) => api.get(`/projects/${id}`),
   update: (id: string, data: object) => api.put(`/projects/${id}`, data),
   delete: (id: string) => api.delete(`/projects/${id}`),
@@ -114,7 +114,7 @@ export const projectsApi = {
 
 // ── Logs ──────────────────────────────────────────────────────────────────────
 export const logsApi = {
-  list: (params?: object) => api.get("/logs/", { params }),
+  list: (params?: object) => api.get("/logs", { params }),
   get: (id: string) => api.get(`/logs/${id}`),
   track: (data: object) => api.post("/logs/track", data),
   delete: (id: string) => api.delete(`/logs/${id}`),
@@ -122,21 +122,21 @@ export const logsApi = {
 
 // ── Evaluations ──────────────────────────────────────────────────────────────
 export const evaluationsApi = {
-  list: (params?: object) => api.get("/evaluations/", { params }),
-  run: (data: object) => api.post("/evaluations/", data),
+  list: (params?: object) => api.get("/evaluations", { params }),
+  run: (data: object) => api.post("/evaluations", data),
 };
 
 // ── Alerts ────────────────────────────────────────────────────────────────────
 export const alertsApi = {
-  list: (params?: object) => api.get("/alerts/", { params }),
-  create: (data: object) => api.post("/alerts/", data),
+  list: (params?: object) => api.get("/alerts", { params }),
+  create: (data: object) => api.post("/alerts", data),
   acknowledge: (id: string) => api.put(`/alerts/${id}/acknowledge`),
   delete: (id: string) => api.delete(`/alerts/${id}`),
 };
 
 // ── Feedback ──────────────────────────────────────────────────────────────────
 export const feedbackApi = {
-  submit: (data: object) => api.post("/feedback/", data),
+  submit: (data: object) => api.post("/feedback", data),
   stats: (params?: object) => api.get("/feedback/stats", { params }),
 };
 
@@ -155,7 +155,7 @@ export const copilotApi = {
 
 // ── Users (Admin) ──────────────────────────────────────────────────────────────
 export const usersApi = {
-  list: (params?: object) => api.get("/users/", { params }),
+  list: (params?: object) => api.get("/users", { params }),
   updateRole: (id: string, role: string) =>
     api.put(`/users/${id}/role`, { role }),
   toggleStatus: (id: string) => api.put(`/users/${id}/status`),

@@ -21,7 +21,7 @@ logger = structlog.get_logger()
 # Alerts router
 alerts_router = APIRouter(prefix="/alerts", tags=["Alerts"])
 
-@alerts_router.post("/", response_model=AlertResponse, status_code=201)
+@alerts_router.post("", response_model=AlertResponse, status_code=201)
 async def create_alert(
     alert_data: AlertCreate,
     db: AsyncSession = Depends(get_db),
@@ -43,7 +43,7 @@ async def create_alert(
     return alert
 
 
-@alerts_router.get("/", response_model=PaginatedResponse)
+@alerts_router.get("", response_model=PaginatedResponse)
 async def list_alerts(
     project_id: Optional[str] = Query(None),
     is_triggered: Optional[bool] = Query(None),
@@ -111,7 +111,7 @@ async def delete_alert(
 # Feedback router
 feedback_router = APIRouter(prefix="/feedback", tags=["Feedback"])
 
-@feedback_router.post("/", response_model=FeedbackResponse, status_code=201)
+@feedback_router.post("", response_model=FeedbackResponse, status_code=201)
 async def submit_feedback(
     feedback_data: FeedbackCreate,
     db: AsyncSession = Depends(get_db),
@@ -229,7 +229,7 @@ async def get_security_stats(
 # Users router (admin)
 users_router = APIRouter(prefix="/users", tags=["Users"])
 
-@users_router.get("/")
+@users_router.get("")
 async def list_users(
     page: int = Query(1, ge=1),
     page_size: int = Query(20, ge=1, le=100),

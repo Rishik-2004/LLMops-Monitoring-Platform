@@ -24,7 +24,7 @@ logger = structlog.get_logger()
 router = APIRouter(prefix="/projects", tags=["Projects"])
 
 
-@router.post("/", response_model=ProjectResponse, status_code=201)
+@router.post("", response_model=ProjectResponse, status_code=201)
 async def create_project(
     project_data: ProjectCreate,
     db: AsyncSession = Depends(get_db),
@@ -43,7 +43,7 @@ async def create_project(
     return project
 
 
-@router.get("/", response_model=PaginatedResponse)
+@router.get("", response_model=PaginatedResponse)
 async def list_projects(
     page: int = Query(1, ge=1),
     page_size: int = Query(20, ge=1, le=100),

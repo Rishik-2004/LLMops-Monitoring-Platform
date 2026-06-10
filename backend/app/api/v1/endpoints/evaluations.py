@@ -24,7 +24,7 @@ logger = structlog.get_logger()
 router = APIRouter(prefix="/evaluations", tags=["Evaluations"])
 
 
-@router.post("/", response_model=EvaluationResponse, status_code=201)
+@router.post("", response_model=EvaluationResponse, status_code=201)
 async def run_evaluation(
     eval_data: EvaluationCreate,
     db: AsyncSession = Depends(get_db),
@@ -100,7 +100,7 @@ async def run_evaluation(
     return evaluation
 
 
-@router.get("/", response_model=PaginatedResponse)
+@router.get("", response_model=PaginatedResponse)
 async def list_evaluations(
     project_id: Optional[str] = Query(None),
     page: int = Query(1, ge=1),

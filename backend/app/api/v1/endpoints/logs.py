@@ -112,7 +112,7 @@ async def track_request(
     return {"log_id": str(log.id), "status": "tracked", "flagged": is_flagged}
 
 
-@router.get("/", response_model=PaginatedResponse)
+@router.get("", response_model=PaginatedResponse)
 async def list_logs(
     project_id: Optional[str] = Query(None),
     provider: Optional[str] = Query(None),
