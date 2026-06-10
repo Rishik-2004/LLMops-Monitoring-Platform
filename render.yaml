@@ -20,7 +20,5 @@ services:
         sync: false
       - key: GEMINI_API_KEY
         sync: false
-      - key: ALLOWED_ORIGINS
-        value: '["https://llmops-monitoring-platform.onrender.com","https://ll-mops-monitoring-platform-l7ix.vercel.app"]'
       - key: ALLOWED_HOSTS
         value: '["*"]'

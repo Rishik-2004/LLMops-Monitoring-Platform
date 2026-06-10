@@ -33,7 +33,9 @@ class Settings(BaseSettings):
     # CORS
     ALLOWED_ORIGINS: List[str] = [
         "http://localhost:3000",
-        "https://llmops-platform.vercel.app",
+        "http://localhost:3001",
+        "https://llmops-monitoring-platform.onrender.com",
+        "https://ll-mops-monitoring-platform-l7ix.vercel.app",
     ]
     ALLOWED_HOSTS: List[str] = ["*"]
     
