@@ -15,8 +15,15 @@ const nextConfig = {
     ],
   },
   env: {
-    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/v1',
     NEXT_PUBLIC_APP_NAME: 'LLMOps Platform',
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: 'https://llmops-monitoring-platform.onrender.com/api/:path*',
+      },
+    ];
   },
 };
 
