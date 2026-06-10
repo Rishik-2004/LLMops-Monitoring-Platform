@@ -1,7 +1,11 @@
 import axios, { AxiosError, InternalAxiosRequestConfig } from "axios";
 
-const API_URL =
-  process.env.NEXT_PUBLIC_API_URL || "/api/v1";
+// In production: uses Vercel rewrite proxy (/api/* → Render backend)
+// In local dev: set NEXT_PUBLIC_API_URL=http://localhost:8000/api/v1 in .env.local
+const isLocalDev = typeof window !== "undefined" && window.location.hostname === "localhost";
+const API_URL = isLocalDev
+  ? (process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api/v1")
+  : "/api/v1";
 
 export const api = axios.create({
   baseURL: API_URL,
